@@ -1,0 +1,76 @@
+import random
+
+def intro():
+    print("Welkom bij Moeseontaapensialand!")
+    print("Je bent de laatst overlevende in dit mysterieuze land.")
+    print("Neem beslissingen om te overleven en het avontuur aan te gaan.")
+    print("")
+
+def choose_action():
+    print("Wat wil je doen?")
+    print("1. Verken de omgeving.")
+    print("2. Zoek naar voedsel.")
+    print("3. Bouw een schuilplaats.")
+    print("4. Praat met de andere overlevenden.")
+    action = input("Kies een actie (1-4): ")
+    return action
+
+def explore():
+    outcomes = [
+        "Je vindt een verborgen waterval met helder water!",
+        "Je komt een vriendelijke wilde dier tegen dat je helpt.",
+        "Je struikelt en valt, maar gelukkig heb je niets gebroken.",
+        "Je raakt verdwaald en moet terugkeren."
+    ]
+    return random.choice(outcomes)
+
+def find_food():
+    outcomes = [
+        "Je vindt bessen en een paar eetbare planten.",
+        "Je vindt een vis in de rivier!",
+        "Je vindt niets en gaat met lege handen terug.",
+        "Je ontmoet een jager die je wat voedsel geeft."
+    ]
+    return random.choice(outcomes)
+
+def build_shelter():
+    outcomes = [
+        "Je bouwt een stevige schuilplaats van takken en bladeren.",
+        "De schuilplaats is instabiel en stort in.",
+        "Je vindt een verlaten hut die je kunt gebruiken.",
+        "Je moet de nacht buiten doorbrengen, maar je overleeft het."
+    ]
+    return random.choice(outcomes)
+
+def talk_to_survivors():
+    outcomes = [
+        "Je leert waardevolle informatie van andere overlevenden.",
+        "Je maakt nieuwe vrienden die je kunnen helpen.",
+        "Sommige overlevenden zijn wantrouwig en willen niet praten.",
+        "Je ontmoet een vijandige groep die je bedreigt."
+    ]
+    return random.choice(outcomes)
+
+def main():
+    intro()
+    while True:
+        action = choose_action()
+        if action == "1":
+            print(explore())
+        elif action == "2":
+            print(find_food())
+        elif action == "3":
+            print(build_shelter())
+        elif action == "4":
+            print(talk_to_survivors())
+        else:
+            print("Ongeldige keuze. Probeer het opnieuw.")
+
+        cont = input("Wil je een andere actie proberen? (ja/nee): ")
+        if cont.lower() != "ja":
+            break
+
+    print("Bedankt voor het spelen! Tot de volgende keer!")
+
+if __name__ == "__main__":
+    main()
