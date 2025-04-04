@@ -1,0 +1,46 @@
+import json
+import os
+from datetime import datetime
+
+# Functie om gegevens op te slaan in een bestand
+def sla_op(data, bestand):
+    with open(bestand, 'w') as file:
+        json.dump(data, file, indent=4)
+
+# Functie om gegevens te laden uit een bestand
+def laad_bestand(bestand):
+    if os.path.exists(bestand):
+        with open(bestand, 'r') as file:
+            return json.load(file)
+    return {}
+
+# Functie om de trainingsschema in te voeren
+def trainingsschema():
+    print("\nVoer je trainingsschema in voor de dag:")
+    training = input("Wat is je trainingsdoel voor vandaag? ")
+    duur = input("Hoelang train je vandaag? (bijv. 1 uur) ")
+    return {"doel": training, "duur": duur}
+
+# Functie om het dieetplan in te voeren
+def dieetplan():
+    print("\nVoer je dieetplan in voor de dag:")
+    ontbijt = input("Wat eet je voor ontbijt? ")
+    lunch = input("Wat eet je voor lunch? ")
+    diner = input("Wat eet je voor diner? ")
+    tussendoortjes = input("Wat zijn je tussendoortjes vandaag? ")
+    return {"ontbijt": ontbijt, "lunch": lunch, "diner": diner, "tussendoortjes": tussendoortjes}
+
+# Functie om je werkrooster in te voeren
+def werkrooster():
+    print("\nVoer je werkrooster in voor de dag:")
+    werkuren = input("Van welke tijd tot welke tijd werk je vandaag? (bijv. 9:00 - 17:00) ")
+    taak = input("Wat is je belangrijkste taak vandaag op je werk? ")
+    return {"werkuren": werkuren, "taak": taak}
+
+# Functie om sociale activiteiten te plannen
+def sociale_activiteiten():
+    print("\nVoer je sociale activiteiten in voor de dag:")
+    vrienden = input("Met wie wil je vandaag afspreken? (Vul de namen in, gescheiden door komma's) ")
+    fanaten = input("Wie van je trouwe volgelingen wil je deze dag in de spotlight zetten? ")
+    tribute = input("Hoe wil je de wereld eren vandaag? (bijv. dankbaarheid uiten, doelen delen) ")
+    return {"vrienden": vrienden.split(','), "fanaten": fanaten, "tribute":
