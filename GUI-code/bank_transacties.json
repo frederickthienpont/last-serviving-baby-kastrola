@@ -1,0 +1,87 @@
+import random
+import json
+import os
+
+# Functie om de banktransacties op te slaan
+def sla_op_transacties(transacties, bestand):
+    with open(bestand, 'w') as file:
+        json.dump(transacties, file, indent=4)
+
+# Functie om de banktransacties uit een bestand te laden
+def laad_transacties(bestand):
+    if os.path.exists(bestand):
+        with open(bestand, 'r') as file:
+            return json.load(file)
+    return {}
+
+# Functie voor het uitvoeren van een banktransactie
+def voer_transactie_uit(rekening, bedrag, type_transactie):
+    transactie = {
+        "rekening": rekening,
+        "bedrag": bedrag,
+        "type": type_transactie,
+        "status": "goedgekeurd" if bedrag < 10000 else "verdacht"
+    }
+    return transactie
+
+# Functie om verdachte transacties te detecteren
+def controleer_op_verdachte_transacties(transacties):
+    verdachte_transacties = []
+    for transactie in transacties:
+        if transactie["status"] == "verdacht":
+            verdachte_transacties.append(transactie)
+    return verdachte_transacties
+
+# Functie om banktransacties te simuleren
+def simuleer_banktransacties():
+    transacties = []
+    rekeningen = ["123456", "987654", "555555", "444444", "333333"]
+    
+    for _ in range(10):  # Simuleer 10 transacties
+        rekening = random.choice(rekeningen)
+        bedrag = random.randint(1, 20000)  # Bedrag kan variëren van 1 tot 20.000
+        type_transactie = "opname" if random.random() > 0.5 else "storting"
+        
+        transactie = voer_transactie_uit(rekening, bedrag, type_transactie)
+        transacties.append(transactie)
+    
+    return transacties
+
+# Functie om verdachte transacties te tonen
+def toon_verdachte_transacties(verdachte_transacties):
+    if len(verdachte_transacties) == 0:
+        print("Geen verdachte transacties gevonden.")
+    else:
+        print("Verdachte transacties gevonden:")
+        for transactie in verdachte_transacties:
+            print(f"Rekening: {transactie['rekening']}, Bedrag: {transactie['bedrag']}, Type: {transactie['type']}, Status: {transactie['status']}")
+
+# Functie om een bankrekening afschrift weer te geven
+def toon_afschrift(transacties):
+    print("\n--- Bankafschrift ---")
+    for transactie in transacties:
+        print(f"Rekening: {transactie['rekening']}, Bedrag: {transactie['bedrag']}, Type: {transactie['type']}")
+
+# Hoofdprogramma
+def main():
+    bestand = "bank_transacties.json"
+    
+    # Laad de bestaande transacties (indien aanwezig)
+    transacties = laad_transacties(bestand)
+    
+    # Simuleer banktransacties en voeg ze toe
+    nieuwe_transacties = simuleer_banktransacties()
+    transacties.extend(nieuwe_transacties)
+
+    # Sla de nieuwe transacties op
+    sla_op_transacties(transacties, bestand)
+    
+    # Toon het bankafschrift
+    toon_afschrift(transacties)
+    
+    # Controleer op verdachte transacties
+    verdachte_transacties = controleer_op_verdachte_transacties(transacties)
+    toon_verdachte_transacties(verdachte_transacties)
+
+if __name__ == "__main__":
+    main()
