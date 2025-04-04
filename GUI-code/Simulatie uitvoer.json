@@ -1,0 +1,11 @@
+--- Bankafschrift ---
+Rekening: 123456, Bedrag: 5000, Type: opname
+Rekening: 987654, Bedrag: 15000, Type: storting
+Rekening: 555555, Bedrag: 8000, Type: opname
+Rekening: 444444, Bedrag: 12000, Type: storting
+Rekening: 333333, Bedrag: 20000, Type: opname
+
+Verdachte transacties gevonden:
+Rekening: 987654, Bedrag: 15000, Type: storting, Status: verdacht
+Rekening: 444444, Bedrag: 12000, Type: storting, Status: verdacht
+Rekening: 333333, Bedrag: 20000, Type: opname, Status: verdacht
