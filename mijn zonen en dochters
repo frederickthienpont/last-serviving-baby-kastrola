@@ -1,0 +1,43 @@
+class Jantje:
+    def __init__(self):
+        self.huiswerk_af = False
+        self.attributen = ["pen", "schrift", "rugzak"]
+        self.vrienden = ["Piet", "Kees", "Anna"]
+        self.familie = ["mama", "papa", "zus"]
+        self.gemoedstoestand = "neutraal"
+        self.belangrijke_dingen = ["gezondheid", "familie", "school"]
+        self.onbelangrijke_dingen = ["likes op TikTok", "dure sneakers"]
+        self.werkplaats = "bureau in zijn kamer"
+
+    def maak_huiswerk(self):
+        print("Jantje gaat huiswerk maken aan zijn", self.werkplaats)
+        if "pen" in self.attributen and "schrift" in self.attributen:
+            self.huiswerk_af = True
+            self.gemoedstoestand = "trots"
+            print("Huiswerk is af! Jantje voelt zich", self.gemoedstoestand)
+        else:
+            self.gemoedstoestand = "gefrustreerd"
+            print("Hij mist spullen... Jantje is", self.gemoedstoestand)
+
+    def praat_met_familie(self):
+        print("Jantje praat met zijn familie:", ", ".join(self.familie))
+        self.gemoedstoestand = "blij"
+
+    def chill_met_vrienden(self):
+        print("Jantje gaat chillen met:", ", ".join(self.vrienden))
+        self.gemoedstoestand = "relaxed"
+
+    def evalueer_levensprioriteiten(self):
+        print("Wat is echt belangrijk voor Jantje?")
+        for ding in self.belangrijke_dingen:
+            print(f"✅ {ding}")
+        print("En wat laat hij liever los?")
+        for ding in self.onbelangrijke_dingen:
+            print(f"❌ {ding}")
+
+# Verhaal starten
+jantje = Jantje()
+jantje.maak_huiswerk()
+jantje.praat_met_familie()
+jantje.chill_met_vrienden()
+jantje.evalueer_levensprioriteiten()
