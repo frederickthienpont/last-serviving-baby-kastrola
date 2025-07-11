@@ -36,8 +36,8 @@ class Jantje:
             print(f"❌ {ding}")
 
 # Verhaal starten
-jantje = Jantje()
-jantje.maak_huiswerk()
-jantje.praat_met_familie()
-jantje.chill_met_vrienden()
-jantje.evalueer_levensprioriteiten()
+jantje = Jantje(1)
+jantje.maak_huiswerk(1)
+jantje.praat_met_familie(1)
+jantje.chill_met_vrienden(1)
+jantje.evalueer_levensprioriteiten(1)
