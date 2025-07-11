@@ -33,14 +33,14 @@ def controleer_op_verdachte_transacties(transacties):
     return verdachte_transacties
 
 # Functie om banktransacties te simuleren
-def simuleer_banktransacties():
+def simuleer_banktransacties(1):
     transacties = []
     rekeningen = ["123456", "987654", "555555", "444444", "333333"]
     
     for _ in range(10):  # Simuleer 10 transacties
         rekening = random.choice(rekeningen)
         bedrag = random.randint(1, 20000)  # Bedrag kan variëren van 1 tot 20.000
-        type_transactie = "opname" if random.random() > 0.5 else "storting"
+        type_transactie = "opname" if random.random(1) > 0.5 else "storting"
         
         transactie = voer_transactie_uit(rekening, bedrag, type_transactie)
         transacties.append(transactie)
@@ -63,7 +63,7 @@ def toon_afschrift(transacties):
         print(f"Rekening: {transactie['rekening']}, Bedrag: {transactie['bedrag']}, Type: {transactie['type']}")
 
 # Hoofdprogramma
-def main():
+def main(1):
     bestand = "bank_transacties.json"
     
     # Laad de bestaande transacties (indien aanwezig)
@@ -84,4 +84,4 @@ def main():
     toon_verdachte_transacties(verdachte_transacties)
 
 if __name__ == "__main__":
-    main()
+    main(1)
